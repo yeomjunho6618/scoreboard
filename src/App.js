@@ -1,26 +1,49 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
+import {Header} from './components/header';
+import {Player} from './components/player';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+// class 컨포넌트 규칙
+//0. class 첫문자는 대문자
+//1. React.Component 상속
+//2. render 구현
+//3. return 해야한다
+
+
+class App extends React.Component{
+  state = {
+    players: [
+      {name: 'Yeom', age: 36},
+      {name: 'Chan', age: 40},
+      {name: 'Kim', age: 12},
+      {name: 'Hun', age: 20}
+    ]
+  };
+
+  setRemoveItem = (_index) => {
+    this.setState(prevState => {
+      const players = prevState.players.filter((item, i)=>{
+        return i !== _index;
+      });
+
+      return {players};
+    });
+  }
+
+  render() {
+    const {players} = this.state;
+    return(
+        <div className="scoreboard">
+          <Header title="Scoreboard" players={players.length} />
+          {
+            players.map(
+                (item, i) => <Player name={item.name} age={item.age} index={i} key={i} callback={this.setRemoveItem} />
+            )
+          }
+        </div>
+    )
+  }
 }
 
 export default App;
