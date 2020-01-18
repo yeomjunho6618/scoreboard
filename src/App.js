@@ -14,10 +14,10 @@ import {Player} from './components/player';
 class App extends React.Component{
   state = {
     players: [
-      {name: 'Yeom', age: 36},
-      {name: 'Chan', age: 40},
-      {name: 'Kim', age: 12},
-      {name: 'Hun', age: 20}
+      {name: 'Yeom', age: 36, score: 3},
+      {name: 'Chan', age: 40, score: 4},
+      {name: 'Kim', age: 12, score: 5},
+      {name: 'Hun', age: 20, score: 6}
     ]
   };
 
