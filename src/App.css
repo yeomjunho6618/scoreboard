@@ -257,6 +257,7 @@ input[type=submit]:hover {
   padding: 1rem;
   color: white;
   margin: 0;
+  color:#000;
 }
 
 .bad-title {
